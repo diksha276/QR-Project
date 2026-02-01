@@ -1,0 +1,181 @@
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+.sl-page {
+  min-height: 100vh;
+  background: #0066ff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* TITLE */
+.sl-title {
+  color: white;
+  font-size: 34px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+/* SEARCH BAR FULL WIDTH */
+.search-bar {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+/* ✅ WHITE AREA UNDER SEARCH BAR (ALWAYS) */
+.white-area {
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-sizing: border-box;
+  min-height: 300px; /* stays white even if no students */
+}
+
+/* ACTIONS */
+.student-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.action-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background: #0066ff;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 28px;
+  text-align: center;
+}
+
+.action-text {
+  margin: 4px 0 0 0;
+  font-size: 12px;
+  color: black;
+  font-weight: bold;
+}
+
+/* EMPTY MESSAGE */
+.empty-text {
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+/* TABLE FULL WIDTH */
+.student-table {
+  width: 100%;
+  border-radius: 12px;
+  border-collapse: collapse;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.student-table th,
+.student-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.student-table th {
+  font-weight: bold;
+}
+
+/* HIDE */
+.hidden {
+  display: none !important;
+}
+
+/* POPUP */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+
+  z-index: 9999;
+}
+
+.popup-box {
+  width: 360px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.popup-title {
+  margin-top: 0;
+  text-align: center;
+  color: #0066ff;
+}
+
+.form-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.popup-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: green;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.close-popup {
+  background: #111;
+}
+
+.remove-popup-btn {
+  background: red;
+}

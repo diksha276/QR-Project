@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student List</title>
+  <link rel="stylesheet" href="sl.css">
+</head>
+
+<body class="sl-page">
+
+  <h1 class="sl-title">Student List</h1>
+
+  <!-- SEARCH BAR -->
+  <input class="search-bar" type="text" placeholder="Search student">
+
+  <!-- WHITE AREA UNDER SEARCH BAR (ALWAYS VISIBLE) -->
+  <div class="white-area">
+
+    <!-- REMOVE + ADD STUDENT -->
+    <div class="student-actions">
+      <div class="action-item">
+        <button class="action-btn remove-btn" id="removeStudentBtn">-</button>
+        <p class="action-text">Remove student</p>
+      </div>
+
+      <div class="action-item">
+        <button class="action-btn add-btn" id="addStudentBtn">+</button>
+        <p class="action-text">Add student</p>
+      </div>
+    </div>
+
+    <!-- EMPTY MESSAGE -->
+    <p class="empty-text" id="emptyText">No students added yet</p>
+
+    <!-- TABLE FULL WIDTH -->
+    <table class="student-table hidden" id="studentTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Moodle ID</th>
+          <th>Roll no.</th>
+          <th>Email</th>
+          <th>Attendance %</th>
+        </tr>
+      </thead>
+
+      <tbody id="studentTableBody">
+        <!-- students added by JS -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ADD STUDENT POPUP -->
+  <div class="popup hidden" id="addStudentPopup">
+    <div class="popup-box">
+      <h2 class="popup-title">Add Student</h2>
+
+      <form class="form-box" id="addStudentForm">
+        <label class="label">Name</label>
+        <input class="input" id="sName" type="text" placeholder="Enter name" required>
+
+        <label class="label">Moodle ID</label>
+        <input class="input" id="sMoodle" type="text" placeholder="Enter Moodle ID" required maxlength="8">
+
+        <label class="label">Roll no.</label>
+        <input class="input" id="sRoll" type="number" placeholder="Enter roll no." required>
+
+        <label class="label">Email</label>
+        <input class="input" id="sEmail" type="email" placeholder="example@domain.com" required>
+
+        <button class="popup-btn" type="submit">Add Student</button>
+        <button class="popup-btn close-popup" id="closeAddPopupBtn" type="button">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- REMOVE STUDENT POPUP -->
+  <div class="popup hidden" id="removeStudentPopup">
+    <div class="popup-box">
+      <h2 class="popup-title">Remove Student</h2>
+
+      <form class="form-box" id="removeStudentForm">
+        <label class="label">Moodle ID</label>
+        <input class="input" id="removeMoodleId" type="text" placeholder="Enter Moodle ID" maxlength="8" required>
+
+        <button class="popup-btn remove-popup-btn" type="submit">Remove Student</button>
+        <button class="popup-btn close-popup" id="closeRemovePopupBtn" type="button">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="sl.js"></script>
+</body>
+</html>

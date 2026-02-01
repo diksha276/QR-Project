@@ -1,0 +1,165 @@
+body {
+  font-family: Arial;
+  margin: 0;
+  padding: 0;
+}
+
+/* LOGIN PAGE */
+.login-page {
+  min-height: 100vh;
+  background: green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TITLE AT TOP */
+.main-title {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 2px;
+}
+
+/* BOX */
+.login-box {
+  width: 350px;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+
+  /* Keeps it centered below title */
+  margin-bottom: 30px;
+
+  /* IMPORTANT FIX: if form becomes tall */
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* BOX TITLE */
+.box-title {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+/* MAIN BUTTONS */
+.btn-option {
+  width: 100%;
+  padding: 12px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.or-text {
+  text-align: center;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+/* HIDE */
+.hidden {
+  display: none;
+}
+
+/* BACK BUTTON */
+.btn-back {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: #111;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* SWITCH BUTTONS */
+.switch-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.switch-btn {
+  width: 100%;
+  padding: 10px;
+  background: #e5e7eb;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #111;
+}
+
+.switch-btn.active {
+  background: green;
+  color: white;
+}
+
+/* REGISTER SECTIONS */
+.register-section {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* FORM STYLES */
+.form-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: green;
+}
+
+/* SUBMIT BUTTON */
+.btn-submit {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ERROR TEXT */
+.error-text {
+  color: red;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+  margin: 5px 0;
+}
+
+

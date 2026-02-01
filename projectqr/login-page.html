@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Attendance Portal</title>
+  <link rel="stylesheet" href="login-page.css">
+</head>
+
+<body class="login-page">
+  <h1 class="main-title">APSIT ATTENDANCE PORTAL</h1>
+
+  <!-- CHOICE BOX -->
+  <div class="login-box" id="choiceBox">
+    <button class="btn-option" id="loginBtn">LOGIN</button>
+    <p class="or-text">or</p>
+    <button class="btn-option" id="registerBtn">REGISTER</button>
+  </div>
+
+  <!-- LOGIN BOX -->
+  <div class="login-box hidden" id="loginBox">
+    <h2 class="box-title">Login</h2>
+
+    <!-- SWITCH BUTTONS FOR LOGIN -->
+    <div class="switch-container">
+      <button class="switch-btn active" id="studentLoginSwitch" type="button">Student</button>
+      <button class="switch-btn" id="teacherLoginSwitch" type="button">Teacher</button>
+    </div>
+
+    <!-- STUDENT LOGIN FORM -->
+    <div class="register-section" id="studentLoginSection">
+      <form class="form-box" id="studentLoginForm">
+        <label class="label">Email</label>
+        <input class="input" type="email" placeholder="example@domain.com" required>
+
+        <label class="label">Password</label>
+        <input class="input" type="password" placeholder="Enter your password" required>
+
+        <button class="btn-submit" type="submit">Login as Student</button>
+      </form>
+    </div>
+
+    <!-- TEACHER LOGIN FORM -->
+    <div class="register-section hidden" id="teacherLoginSection">
+      <form class="form-box" id="teacherLoginForm">
+        <label class="label">Email</label>
+        <input class="input" type="email" placeholder="example@domain.com" required>
+
+        <label class="label">Password</label>
+        <input class="input" type="password" placeholder="Enter your password" required>
+
+        <button class="btn-submit" type="submit">Login as Teacher</button>
+      </form>
+    </div>
+
+    <button class="btn-back" id="backFromLogin" type="button">Back</button>
+  </div>
+
+  <!-- REGISTER BOX -->
+  <div class="login-box hidden" id="registerBox">
+    <h2 class="box-title">Register</h2>
+
+    <!-- SWITCH BUTTONS FOR REGISTER -->
+    <div class="switch-container">
+      <button class="switch-btn active" id="studentSwitch" type="button">Student</button>
+      <button class="switch-btn" id="teacherSwitch" type="button">Teacher</button>
+    </div>
+
+    <!-- STUDENT REGISTER -->
+    <div class="register-section" id="studentRegisterSection">
+      <form class="form-box" id="studentForm">
+        <label class="label">Full Name</label>
+        <input class="input" type="text" placeholder="Enter full name" required>
+
+        <label class="label">Moodle ID</label>
+        <input class="input" id="studentMoodleId" type="text" placeholder="Moodle ID" required maxlength="8">
+
+        <label class="label">Roll No.</label>
+        <input class="input" type="number" placeholder="Enter Roll Number" required>
+
+        <label class="label">Department</label>
+        <select class="input" required>
+          <option value="">Select Department</option>
+          <option value="COMPS">COMPS</option>
+          <option value="AIML">AIML</option>
+          <option value="DS">DS</option>
+          <option value="MECH">MECH</option>
+          <option value="CIVIL">CIVIL</option>
+          <option value="H&AS">H&AS</option>
+        </select>
+
+        <label class="label">Email</label>
+        <input class="input" id="studentEmail" type="email" placeholder="example@domain.com" required>
+
+        <label class="label">Password</label>
+        <input class="input" id="studentPassword" type="password" placeholder="Enter password" required>
+
+        <label class="label">Confirm Password</label>
+        <input class="input" id="studentConfirmPassword" type="password" placeholder="Confirm password" required>
+
+        <p class="error-text hidden" id="studentPasswordError">Passwords do not match!</p>
+        <p class="error-text hidden" id="moodleError">Invalid Moodle ID!</p>
+
+        <button class="btn-submit" type="submit">Register as Student</button>
+      </form>
+    </div>
+
+    <!-- TEACHER REGISTER -->
+    <div class="register-section hidden" id="teacherRegisterSection">
+      <form class="form-box" id="teacherForm">
+        <label class="label">Full Name</label>
+        <input class="input" type="text" placeholder="Enter full name" required>
+
+        <label class="label">Email</label>
+        <input class="input" id="teacherEmail" type="email" placeholder="example@domain.com" required>
+
+        <label class="label">Teacher ID / Employee ID</label>
+        <input class="input" type="text" placeholder="Enter Teacher ID" required>
+
+        <label class="label">Department</label>
+        <select class="input" required>
+          <option value="">Select Department</option>
+          <option value="COMPS">COMPS</option>
+          <option value="AIML">AIML</option>
+          <option value="DS">DS</option>
+          <option value="MECH">MECH</option>
+          <option value="CIVIL">CIVIL</option>
+          <option value="H&AS">H&AS</option>
+        </select>
+
+        <label class="label">Password</label>
+        <input class="input" id="teacherPassword" type="password" placeholder="Enter password" required>
+
+        <label class="label">Confirm Password</label>
+        <input class="input" id="teacherConfirmPassword" type="password" placeholder="Confirm password" required>
+
+        <p class="error-text hidden" id="passwordError">Passwords do not match!</p>
+
+        <button class="btn-submit" type="submit">Register as Teacher</button>
+      </form>
+    </div>
+
+    <button class="btn-back" id="backFromRegister" type="button">Back</button>
+  </div>
+
+  <script src="login-page.js"></script>
+</body>
+</html>

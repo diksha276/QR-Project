@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Teacher Dashboard</title>
+  <link rel="stylesheet" href="teachdash.css">
+</head>
+
+<body class="teacher-dashboard">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <button class="logout-btn" id="logoutBtn">Logout</button>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="dashboard-container">
+
+    <!-- PROFILE PHOTO AREA -->
+    <div class="profile-photo" id="mainProfilePhoto">
+      <p class="photo-text">Teacher Photo</p>
+    </div>
+
+    <!-- WELCOME TEXT -->
+    <h1 class="welcome-text">Welcome Teacher</h1>
+
+    <!-- BUTTONS -->
+    <div class="btn-container">
+      <button class="dash-btn" id="updateProfileBtn">Update Profile</button>
+      <button class="dash-btn" id="attendanceBtn">View / Edit Attendance</button>
+    </div>
+
+  </div>
+
+  <!-- UPDATE PROFILE POPUP -->
+  <div class="popup hidden" id="profilePopup">
+    <div class="popup-box">
+
+      <h2 class="popup-title">Update Profile</h2>
+
+      <!-- PROFILE PIC UPDATE -->
+      <div class="pic-update-area">
+        <label class="pic-box" for="profilePicInput" id="popupPicBox">
+          <span class="plus-text" id="popupPlusText">+</span>
+        </label>
+
+        <input type="file" id="profilePicInput" accept="image/*" class="hidden">
+        <p class="pic-text">Update Profile Picture</p>
+      </div>
+
+      <!-- TEACHER DETAILS -->
+      <form class="form-box">
+        <label class="label">Full Name</label>
+        <input class="input" type="text" placeholder="Enter full name">
+
+        <label class="label">Email</label>
+        <input class="input" type="email" placeholder="example@domain.com">
+
+        <label class="label">Teacher ID / Employee ID</label>
+        <input class="input" type="text" placeholder="Enter Teacher ID">
+
+        <label class="label">Department</label>
+        <select class="input">
+          <option value="">Select Department</option>
+          <option value="COMPS">COMPS</option>
+          <option value="AIML">AIML</option>
+          <option value="DS">DS</option>
+          <option value="MECH">MECH</option>
+          <option value="CIVIL">CIVIL</option>
+        </select>
+
+        <label class="label">Password</label>
+        <input class="input" type="password" placeholder="Enter password">
+
+        <label class="label">Confirm Password</label>
+        <input class="input" type="password" placeholder="Confirm password">
+      </form>
+
+      <!-- POPUP BUTTONS -->
+      <button class="update-btn" id="saveProfileBtn" type="button">Update Profile</button>
+      <button class="close-btn" id="closePopupBtn" type="button">Close</button>
+    </div>
+  </div>
+
+  <script src="teachdash.js"></script>
+</body>
+</html>
+
+
+
+

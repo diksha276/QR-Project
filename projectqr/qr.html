@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QR Attendance</title>
+  <link rel="stylesheet" href="qr.css">
+</head>
+
+<body class="qr-page">
+
+  <h1 class="qr-title">QR Attendance</h1>
+
+  <div class="qr-box">
+    <button class="qr-btn" id="generateQrBtn">Generate QR</button>
+    <p class="timer-text" id="timerText">Timer: 05:00</p>
+
+    <div class="qr-area" id="qrArea">
+      <p class="qr-placeholder">QR will appear here</p>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-container">
+    <table class="attendance-table">
+      <thead>
+        <tr>
+          <th>Roll no.</th>
+          <th>Moodle ID</th>
+          <th>Name</th>
+          <th>Present</th>
+          <th>Absent</th>
+          <th>Leave</th>
+        </tr>
+      </thead>
+
+      <tbody id="attendanceBody">
+        <!-- later backend will fill this -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="qr.js"></script>
+</body>
+</html>

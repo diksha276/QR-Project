@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Choose Department</title>
+  <link rel="stylesheet" href="teachdash2.css">
+</head>
+
+<body class="dept-page">
+
+  <div class="dept-container">
+    <h1 class="dept-title">Choose Department</h1>
+
+    <div class="dept-buttons">
+      <button class="dept-btn comps-btn deptSelectBtn" data-dept="COMPS">COMPS</button>
+      <button class="dept-btn aiml-btn deptSelectBtn" data-dept="AIML">AIML</button>
+      <button class="dept-btn ds-btn deptSelectBtn" data-dept="DS">DS</button>
+      <button class="dept-btn mech-btn deptSelectBtn" data-dept="MECH">MECH</button>
+      <button class="dept-btn civil-btn deptSelectBtn" data-dept="CIVIL">CIVIL</button>
+      <button class="dept-btn has-btn deptSelectBtn" data-dept="H&AS">H&AS</button>
+    </div>
+  </div>
+
+  <!-- YEAR POPUP -->
+  <div class="popup hidden" id="yearPopup">
+    <div class="popup-box">
+      <h2 class="popup-title">Choose Academic Year</h2>
+
+      <div class="option-list" id="yearList">
+        <button class="option-btn year-btn">2024-2025</button>
+        <button class="option-btn year-btn">2025-2026</button>
+      </div>
+
+      <button class="add-option-btn" id="addYearBtn">+</button>
+
+      <p class="error-text hidden" id="yearError">Year already exists!</p>
+
+      <button class="close-btn" id="closeYearPopupBtn" type="button">Close</button>
+    </div>
+  </div>
+
+  <!-- SEMESTER POPUP -->
+  <div class="popup hidden" id="semPopup">
+    <div class="popup-box">
+      <h2 class="popup-title">Choose Semester</h2>
+
+      <div class="option-list" id="semList">
+        <!-- filled by JS -->
+      </div>
+
+      <button class="close-btn" id="closeSemPopupBtn" type="button">Close</button>
+    </div>
+  </div>
+
+  <!-- DIVISION POPUP -->
+  <div class="popup hidden" id="divPopup">
+    <div class="popup-box">
+      <h2 class="popup-title">Choose Division</h2>
+
+      <div class="option-list" id="divList">
+        <button class="option-btn div-btn">A</button>
+        <button class="option-btn div-btn">B</button>
+        <button class="option-btn div-btn">C</button>
+      </div>
+
+      <button class="add-option-btn" id="addDivBtn">+</button>
+
+      <p class="error-text hidden" id="divError">Division already exists!</p>
+
+      <button class="close-btn" id="closeDivPopupBtn" type="button">Close</button>
+    </div>
+  </div>
+
+  <script src="teachdash2.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+.qr-page {
+  min-height: 100vh;
+  background: #0066ff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.qr-title {
+  color: white;
+  text-align: center;
+  font-size: 34px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* QR BOX */
+.qr-box {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.qr-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: green;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.timer-text {
+  margin: 12px 0;
+  font-weight: bold;
+}
+
+/* QR AREA */
+.qr-area {
+  width: 220px;
+  height: 220px;
+  border: 2px dashed #0066ff;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.qr-placeholder {
+  font-weight: bold;
+  color: #0066ff;
+}
+
+/* TABLE */
+.table-container {
+  margin-top: 20px;
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  overflow-x: auto;
+}
+
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.attendance-table th,
+.attendance-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.attendance-table th {
+  font-weight: bold;
+}

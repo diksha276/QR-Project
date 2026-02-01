@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Attendance</title>
+  <link rel="stylesheet" href="lect.css">
+</head>
+
+<body class="lect-page">
+
+  <h1 class="main-title">Attendance</h1>
+
+  <div class="lect-container">
+    <button class="lect-btn" id="studentListBtn">Student List</button>
+    <button class="lect-btn" id="createLectureBtn">Create New Lecture</button>
+  </div>
+
+  <!-- ALL LECTURES -->
+  <h2 class="all-lectures-title">All Lectures</h2>
+
+  <div class="lecture-list" id="lectureList">
+    <p class="no-lecture-text" id="noLectureText">No lectures created yet</p>
+  </div>
+
+  <!-- CREATE LECTURE POPUP -->
+  <div class="popup hidden" id="lecturePopup">
+    <div class="popup-box">
+      <h2 class="popup-title">Add Lecture</h2>
+
+      <form class="form-box" id="lectureForm">
+
+        <label class="label">Subject</label>
+        <select class="input" id="subjectSelect" required>
+          <option value="">Select Subject</option>
+          <option value="DBMS">DBMS</option>
+          <option value="OS">OS</option>
+          <option value="DT">DT</option>
+          <option value="CT">CT</option>
+          <option value="BMD">BMD</option>
+          <option value="OE">OE</option>
+        </select>
+
+        <label class="label">Date</label>
+        <input class="input" id="lectureDate" type="date" required>
+
+        <label class="label">Time</label>
+        <input class="input" id="lectureTime" type="time" required>
+
+        <button class="popup-btn" type="submit">Create Lecture</button>
+        <button class="popup-btn close-popup" id="closeLecturePopupBtn" type="button">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="lect.js"></script>
+</body>
+</html>

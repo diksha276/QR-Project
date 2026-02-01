@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APSIT Student Portal</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <style>
+        :root {
+            --primary: #4e73df;
+            --success: #1cc88a;
+            --danger: #e74a3b;
+            --dark: #333;
+            --gray: #f8f9fa;
+            --history-bg: #6f42c1; 
+            --history-text: #ffffff;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #eef2f3; margin: 0; }
+        .hidden { display: none !important; }
+
+        /* PORTAL LAYOUT */
+        .app-container { display: flex; height: 100vh; }
+        .sidebar { width: 300px; background: white; border-right: 1px solid #ddd; padding: 20px; display: flex; flex-direction: column; align-items: center; box-shadow: 2px 0 10px rgba(0,0,0,0.05); }
+        .main-area { flex: 1; padding: 40px; background: var(--gray); overflow-y: auto; }
+        
+        /* PROFILE SECTION */
+        .user-photo { width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--primary); object-fit: cover; margin-bottom: 15px; background: #eee; }
+        #update-box { width: 100%; background: #f1f3f9; padding: 15px; border-radius: 12px; margin-top: 15px; box-sizing: border-box; }
+        #update-box label { font-size: 11px; font-weight: bold; color: #555; display: block; margin-bottom: 3px; }
+        #update-box input { width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+
+        /* UI BUTTONS */
+        .btn { border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .btn-blue { background: var(--primary); color: white; width: 100%; }
+        .btn-green { background: var(--success); color: white; width: 100%; }
+        .btn-outline { background: transparent; border: 1px solid #ccc; color: #666; width: 100%; margin-top: 10px; }
+        
+        /* CONTENT CARDS */
+        .card-item { background: white; padding: 20px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-left: 6px solid #ccc; }
+        .history-card { background: var(--history-bg); color: var(--history-text); padding: 20px; border-radius: 12px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; border-left: 8px solid #522d94; }
+        .history-card small { color: #d1b9ff; }
+
+        .tab-nav { display: flex; gap: 10px; margin-bottom: 25px; }
+        #reader { width: 100%; max-width: 400px; margin: 10px auto; border-radius: 8px; overflow: hidden; background: #000; }
+    </style>
+</head>
+<body onload="renderClasses()">
+
+    <div class="app-container">
+        <div class="sidebar">
+            <img id="profile-pic" src="https://via.placeholder.com/120" class="user-photo">
+            <h2 id="display-name" style="margin: 5px 0; font-size: 20px;">Jordan Smith</h2>
+            <p id="display-id" style="color: #888; margin: 0; font-size: 14px; font-weight: bold;">ID: STU-101</p>
+            <p id="display-branch" style="margin: 5px 0; color: var(--primary);">Computer Science</p>
+            
+            <button class="btn btn-outline" onclick="toggleUpdateBox()">Update Profile</button>
+            
+            <div id="update-box" class="hidden">
+                <label>Profile Image</label>
+                <input type="file" id="new-pic-input" accept="image/*">
+                
+                <label>Full Name</label>
+                <input type="text" id="new-name-input" placeholder="Update Name">
+                
+                <label>Student ID</label>
+                <input type="text" id="new-id-input" placeholder="Update ID (e.g. STU-101)">
+                
+                <label>Branch</label>
+                <input type="text" id="new-branch-input" placeholder="Update Branch">
+                
+                <button class="btn btn-green" onclick="saveProfile()">Apply Changes</button>
+            </div>
+
+            <button class="btn btn-outline" style="margin-top: auto; color: var(--danger);" onclick="location.reload()">Reset View</button>
+        </div>
+
+        <div class="main-area">
+            <div class="tab-nav">
+                <button class="btn btn-blue" id="tab-today" onclick="switchTab('today')" style="width: auto;">Daily Attendance</button>
+                <button class="btn btn-outline" id="tab-history" onclick="switchTab('history')" style="width: auto;">Semester History</button>
+            </div>
+
+            <div id="view-today">
+                <div style="background: white; padding: 25px; border-radius: 15px; margin-bottom: 25px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                    <h3 style="margin-top: 0;">Scan Subject QR Code</h3>
+                    <div id="reader"></div>
+                    <button class="btn btn-blue" style="width: auto; margin-top: 10px;" onclick="startScanner()">Open Camera</button>
+                </div>
+                <h2>Today's Schedule</h2>
+                <div id="class-list"></div>
+            </div>
+
+            <div id="view-history" class="hidden">
+                <h2>Academic Performance</h2>
+                <div id="history-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let html5QrCode;
+        const subjects = ["Operating Systems", "Mathematics", "Java Coding", "Database Systems"];
+        const mockHistory = [
+            { sem: "Semester 1", att: "94%", gpa: "3.8" },
+            { sem: "Semester 2", att: "89%", gpa: "3.7" },
+            { sem: "Semester 3", att: "92%", gpa: "3.9" }
+        ];
+
+        /* PROFILE UPDATE LOGIC */
+        function toggleUpdateBox() {
+            document.getElementById('update-box').classList.toggle('hidden');
+        }
+
+        function saveProfile() {
+            const name = document.getElementById('new-name-input').value;
+            const branch = document.getElementById('new-branch-input').value;
+            const stuId = document.getElementById('new-id-input').value;
+            const picInput = document.getElementById('new-pic-input');
+
+            if(name) document.getElementById('display-name').innerText = name;
+            if(branch) document.getElementById('display-branch').innerText = branch;
+            if(stuId) document.getElementById('display-id').innerText = stuId;
+            
+            if (picInput.files && picInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = (e) => document.getElementById('profile-pic').src = e.target.result;
+                reader.readAsDataURL(picInput.files[0]);
+            }
+
+            toggleUpdateBox();
+            alert("Identity Updated!");
+        }
+
+        /* NAVIGATION LOGIC */
+        function switchTab(tab) {
+            const isToday = tab === 'today';
+            document.getElementById('view-today').classList.toggle('hidden', !isToday);
+            document.getElementById('view-history').classList.toggle('hidden', isToday);
+            
+            document.getElementById('tab-today').className = isToday ? 'btn btn-blue' : 'btn btn-outline';
+            document.getElementById('tab-history').className = !isToday ? 'btn btn-blue' : 'btn btn-outline';
+            
+            if(!isToday) renderHistory();
+        }
+
+        function renderHistory() {
+            const list = document.getElementById('history-list');
+            list.innerHTML = "";
+            mockHistory.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "history-card";
+                div.innerHTML = `
+                    <div>
+                        <strong>${item.sem}</strong><br>
+                        <small>Final GPA: ${item.gpa}</small>
+                    </div> 
+                    <div style="text-align: right;">
+                        <span style="font-size: 20px; font-weight: bold;">${item.att}</span><br>
+                        <small>Attendance</small>
+                    </div>`;
+                list.appendChild(div);
+            });
+        }
+
+        function renderClasses() {
+            const list = document.getElementById('class-list');
+            list.innerHTML = "";
+            subjects.forEach(sub => {
+                const div = document.createElement('div');
+                div.className = "card-item";
+                div.id = "class-" + sub.replace(/\s/g, '');
+                div.innerHTML = `
+                    <strong>${sub}</strong> 
+                    <span style="color:#888; font-size: 14px; font-weight: bold;">ABSENT</span>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        function startScanner() {
+            html5QrCode = new Html5Qrcode("reader");
+            html5QrCode.start({ facingMode: "environment" }, { fps: 10, qrbox: 250 }, 
+                (text) => {
+                    subjects.forEach(sub => {
+                        if(sub.toLowerCase() === text.trim().toLowerCase()) {
+                            const row = document.getElementById("class-" + sub.replace(/\s/g, ''));
+                            row.style.borderLeftColor = "var(--success)";
+                            row.style.background = "#f0fff4";
+                            row.querySelector('span').innerText = "✓ PRESENT";
+                            row.querySelector('span').style.color = "var(--success)";
+                        }
+                    });
+                }
+            ).catch(err => alert("Camera error: " + err));
+        }
+    </script>
+</body>
+</html>
